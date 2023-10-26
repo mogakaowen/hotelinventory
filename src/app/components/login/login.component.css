@@ -1,0 +1,18 @@
+.form-control{
+    width: 98%;
+    padding: 10px;
+    margin-top: 1px;
+    margin-bottom: 2px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+}
+
+.btn{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: royalblue;
+    color: white;
+    cursor: pointer;
+}

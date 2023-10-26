@@ -1,0 +1,36 @@
+<!-- <h1>Welcome to {{hotelName}}</h1> interpolation -->
+<app-header></app-header>
+<!-- <app-header></app-header> -->
+<router-outlet></router-outlet>
+
+<!-- {{rooms$ | async | json}} -->
+
+<div [ngStyle]="{ 'color': rooms.availableRooms ? 'green' : 'red'}" [hidden]="hideRooms">
+    <span>
+        Number of available rooms : {{roomsCount$ | async}}
+    </span>
+    <!-- <span [innerText]="rooms.availableRooms"></span> Property binding -->
+</div>
+
+
+
+<!-- {{roomsList | json}} -->
+<div *ngIf="selectedRoom">
+    {{selectedRoom | json}}
+</div>
+
+<div>
+    <button (click)="toggle()">Toggle</button> <!-- Event binding -->
+    <button routerLink="add">Add Room</button>
+    <!-- <button (click)="editRoom()">Edit Room</button>
+    <button (click)="deleteRoom()">Delete Room</button>
+    <h4>{{totalBytes}} bytes loaded for getPhotos HttpRequest</h4> -->
+</div>
+<h3>{{getError$ | async}}</h3>
+
+
+<div *ngIf="hideRooms">
+    <div *ngIf="rooms$ | async as rooms">
+        <app-rooms-list [Rooms]="rooms" (selectedRoom)="roomSelect($event)" [title]="Title"></app-rooms-list>
+    </div>
+</div>

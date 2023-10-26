@@ -1,0 +1,26 @@
+.example-form {
+    min-width: 150px;
+    max-width: auto;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.address-header{
+    background-color: rgb(189, 187, 187);
+
+}
+
+.address-title{
+    font-size: 16px;
+}
+
+button{
+    margin: 5px;
+}
+
+.buttons{
+    display: flex;
+}

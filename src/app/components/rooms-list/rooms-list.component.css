@@ -1,0 +1,36 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid grey;
+    box-sizing: border-box;
+}
+table tr:nth-child(even){
+    background-color: #c6b7b7;
+}
+table tr:nth-child(odd){
+    background-color: #decaca;
+}
+table th{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+table td{
+    padding: 10px;
+    text-align: left;
+}
+table tr:hover{
+    background-color: grey;
+}
+
+.btn{
+    background-color: #c8e7c9;
+    border: 2px solid grey;
+    border-radius: 2%;
+}
+
+.btn:hover{
+    background-color: #4CAF50;
+    border: 2px solid whitesmoke;
+}

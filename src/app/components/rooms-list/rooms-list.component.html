@@ -1,0 +1,29 @@
+<h2>{{ title }}</h2>
+<table>
+    <tr>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Room Amenities</th>
+        <th>Room Price</th>
+        <th>Check In Time</th>
+        <th>Check Out Time</th>
+        <th>Rating</th>
+        <th>Select Room</th>
+    </tr>
+    <tr *ngFor="let room of Rooms">
+        <td>{{room.roomNumber}}</td>
+        <td>{{room.roomType | titlecase}}</td>
+        <td>{{room.amenities}}</td>
+        <td>{{room.price | currency: 'EUR'}}</td>
+        <td>{{room.checkinTime | date: 'short' }}</td>
+        <td>{{room.checkoutTime | date: 'short'}}</td>
+        <td>{{room.rating |number: '1.0-1' }}</td>
+        <td>
+            <!-- <button class="btn btn-primary" (click)="selectRoom(room)">Click to select
+            </button> -->
+
+            <!-- <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]">Book Room</button> -->
+            <button class="btn btn-primary" routerLink="/booking">Book Room</button>
+        </td>
+    </tr>
+</table>
