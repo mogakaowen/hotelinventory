@@ -11,8 +11,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouteConfigToken } from '../services/routeConfig.service';
 
 
 
@@ -33,9 +36,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatIconModule,
     MatCheckboxModule,
     HttpClientModule,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
   exports: [
     BookingComponent
-  ]
+  ],
 })
 export class BookingModule { }

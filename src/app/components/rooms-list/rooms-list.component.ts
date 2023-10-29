@@ -10,6 +10,7 @@ import { Roomlist } from 'src/app/room';
 export class RoomsListComponent implements OnInit, OnChanges, OnDestroy{
   @Input() Rooms: Roomlist[] = [];
   @Input() title: string = '';
+  @Input() price: number = 0;
 
   @Output() selectedRoom = new EventEmitter<Roomlist>();
 

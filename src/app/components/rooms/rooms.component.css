@@ -28,3 +28,11 @@ h4{
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75); 
 }
 
+.form-control{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    transition: all 0.3s ease-in-out;
+}
+

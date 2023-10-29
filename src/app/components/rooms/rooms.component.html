@@ -28,9 +28,13 @@
 </div>
 <h3>{{getError$ | async}}</h3>
 
+<div>
+    <input type="number" class="form-control" placeholder="Filter rooms by price..." [formControl]="priceFilter">
+</div>
+
 
 <div *ngIf="hideRooms">
     <div *ngIf="rooms$ | async as rooms">
-        <app-rooms-list [Rooms]="rooms" (selectedRoom)="roomSelect($event)" [title]="Title"></app-rooms-list>
+        <app-rooms-list [Rooms]="rooms" [price]="priceFilter.value" (selectedRoom)="roomSelect($event)" [title]="Title"></app-rooms-list>
     </div>
 </div>

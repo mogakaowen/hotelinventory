@@ -1,6 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookingComponent } from './booking.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; 
+import { ActivatedRoute } from '@angular/router';
+import { ConfigService } from '../services/config.service';
+import { BookingService } from './booking.service';
 
 describe('BookingComponent', () => {
   let component: BookingComponent;
@@ -8,7 +12,9 @@ describe('BookingComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [BookingComponent]
+      imports: [HttpClientTestingModule],
+      declarations: [BookingComponent],
+      providers: [ConfigService, BookingService, ActivatedRoute]
     });
     fixture = TestBed.createComponent(BookingComponent);
     component = fixture.componentInstance;

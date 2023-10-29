@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { EmailvalidatorDirective } from './directives/emailvalidator.directive';
 // import { RoomsModule } from './components/rooms/rooms.module';
 import { HeaderModule } from './components/header/header.module';
 import { RouteConfigToken } from './services/routeConfig.service';
+import { ErrorhandlerService } from './errorhandler.service';
 
 
 function initFactory(initService: InitService) {
@@ -74,6 +75,10 @@ function initFactory(initService: InitService) {
     useFactory: initFactory,
     deps: [InitService],
     multi: true,
+  },
+  {
+    provide: ErrorHandler,
+    useClass: ErrorhandlerService,
   }
   ],
   bootstrap: [AppComponent]

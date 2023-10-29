@@ -11,9 +11,8 @@ const routes: Routes = [
   canActivateChild: [activateChildGuard],
   children: [
        {path: 'add', component: RoomsAddComponent}, 
-       {path: ':id', component: RoomsBookingComponent}, 
+      //  {path: ':id', component: RoomsBookingComponent}, 
       ]}, // this is a nested route
-  // {path: 'bookings', component: BookingComponent},
 ];
 
 @NgModule({

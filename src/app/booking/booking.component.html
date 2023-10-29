@@ -36,6 +36,7 @@
         </mat-error>
     </mat-form-field>
 
+    {{bookingForm.get('guestName')?.errors | json}}
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Guest Name</mat-label>
         <input type="text" matInput formControlName="guestName" placeholder="Enter name">
@@ -86,6 +87,7 @@
     </mat-form-field>
 
 
+    {{bookingForm.get('checkoutDate')?.errors | json}}
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>CheckOut Date</mat-label>
         <input matInput [matDatepicker]="checkOutpicker" formControlName="checkoutDate"
@@ -93,7 +95,7 @@
         <mat-datepicker-toggle matIconSuffix [for]="checkOutpicker"></mat-datepicker-toggle>
         <mat-datepicker #checkOutpicker></mat-datepicker>
         <mat-error *ngIf="bookingForm.get('checkoutDate')?.hasError('required')">
-            CheckOut is required
+            CheckOut Date is required
         </mat-error>
     </mat-form-field>
 

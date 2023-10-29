@@ -10,7 +10,7 @@
         <th>Rating</th>
         <th>Select Room</th>
     </tr>
-    <tr *ngFor="let room of Rooms">
+    <tr *ngFor="let room of Rooms | filter : price">
         <td>{{room.roomNumber}}</td>
         <td>{{room.roomType | titlecase}}</td>
         <td>{{room.amenities}}</td>
@@ -23,7 +23,7 @@
             </button> -->
 
             <!-- <button class="btn btn-primary" [routerLink]="['/rooms', room.roomNumber]">Book Room</button> -->
-            <button class="btn btn-primary" routerLink="/booking">Book Room</button>
+            <button class="btn btn-primary" [routerLink]="['/booking', room.roomNumber]">Book Room</button>
         </td>
     </tr>
 </table>

@@ -3,6 +3,8 @@ import { ConfigService } from '../services/config.service';
 import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@angular/forms';
 import { BookingService } from './booking.service';
 import { exhaustMap, mergeAll, mergeMap, switchMap } from 'rxjs';
+import { CustomValidator } from '../validators/custom-validator';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -19,12 +21,12 @@ export class BookingComponent implements OnInit {
     return this.bookingForm.get('guests') as FormArray;
   }
 
-  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService) { }
+  constructor(private configService: ConfigService, private fb: FormBuilder, private bookingService: BookingService, private route: ActivatedRoute) { }
 
   // patchValue vs setValue
   getBookingData() {
     this.bookingForm.patchValue({
-      roomId: '2',
+      // roomId: '', // affects the value of the form control when using activated route
       guestEmail: 'test@gmail.com',
       checkinDate: new Date(2023, 10, 21), // Month is 0-based, so 10 represents November
       checkoutDate: new Date('23-Nov-2023'),
@@ -54,9 +56,11 @@ export class BookingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const roomId = this.route.snapshot.paramMap.get('id'); // disable patchValue for this to work
+    console.log(roomId);
     this.bookingForm = this.fb.group({
       // bookingId: [''],
-      roomId: new FormControl('', [Validators.required]),
+      roomId: new FormControl({value: roomId, disabled:true}, [Validators.required]),
       guestEmail: ['', [Validators.required, Validators.email]],
       checkinDate: ['', [Validators.required]],
       checkoutDate: ['', [Validators.required]],
@@ -64,7 +68,7 @@ export class BookingComponent implements OnInit {
       bookingAmount: ['', [Validators.required]],
       bookingDate: new Date(),
       mobileNumber: ['', [Validators.required]],
-      guestName: ['', [Validators.required, Validators.minLength(5)]],
+      guestName: ['', [Validators.required, Validators.minLength(5), CustomValidator.ValidateName, CustomValidator.ValidateSpecialCharacters()]],
       address: this.fb.group({
         addressLine1: ['', [Validators.required]],
         addressLine2: ['', [Validators.required]],
@@ -81,8 +85,10 @@ export class BookingComponent implements OnInit {
         }),
       ]),  // dynamic form group in a nested form array
       tnc: new FormControl(false, [Validators.requiredTrue]),
-    }
-    // {updateOn : 'blur'},
+    },
+    {
+      updateOn : 'blur',  validators: [CustomValidator.ValidateDate]
+    },
     );
 
     // this.bookingForm.valueChanges.subscribe((data) => {
@@ -92,9 +98,9 @@ export class BookingComponent implements OnInit {
     //   });
     // });
 
-    this.bookingForm.valueChanges.pipe(
-      exhaustMap((data) => this.bookingService.bookRoom(data))).subscribe((data) =>
-        console.log(data));
+    // this.bookingForm.valueChanges.pipe(
+    //   exhaustMap((data) => this.bookingService.bookRoom(data))).subscribe((data) =>
+    //     console.log(data));
 
     this.getBookingData();
   }
