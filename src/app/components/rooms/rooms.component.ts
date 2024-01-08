@@ -90,7 +90,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     // console.log(this.headerComponent)
     this.stream.subscribe((data) => console.log(data));
 
-
+    //An observable has three types of notifications: "next", "error", and "complete".
     this.stream.subscribe({
       next: (data) => console.log(data),
       complete: () => console.log('Completed'),

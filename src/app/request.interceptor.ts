@@ -13,6 +13,7 @@ export class RequestInterceptor implements HttpInterceptor {
 
   constructor() { }
 
+  // check angular documentation for more info about interceptors
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     console.log('Request Interceptor called', request);
     if (request.method === 'POST') {

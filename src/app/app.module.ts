@@ -55,7 +55,7 @@ function initFactory(initService: InitService) {
     MatIconModule,
     MatListModule,
     FormsModule,
-    HeaderModule,
+    // HeaderModule,
   ],
   providers: [{
     provide: APP_SERVICE_CONFIG,
