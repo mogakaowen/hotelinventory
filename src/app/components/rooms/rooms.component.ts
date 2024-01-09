@@ -36,7 +36,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
   subscription!: Subscription
 
-  error$ : Subject<string> = new Subject<string>; // Subject is a type of Observable that allows values to be multicasted to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
+  error$: Subject<string> = new Subject<string>; // Subject is a type of Observable that allows values to be multicasted to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
 
   getError$ = this.error$.asObservable(); // convert the Subject to an Observable
 
@@ -66,6 +66,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
   constructor(@SkipSelf() private roomsService: RoomsService, private configService: ConfigService) { } // @SkipSelf skips the current component and looks for the service in the parent component
 
   ngOnInit(): void {
+    console.log('ngOnInit called');
     this.roomsService.getPhotos().subscribe((event) => {
       switch (event.type) {
         case HttpEventType.Sent: {
@@ -87,8 +88,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
       }
     })
 
-    // console.log(this.headerComponent)
-    this.stream.subscribe((data) => console.log(data));
+    // this.stream.subscribe((data) => console.log(data));
 
     //An observable has three types of notifications: "next", "error", and "complete".
     this.stream.subscribe({

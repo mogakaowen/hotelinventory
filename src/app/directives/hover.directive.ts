@@ -22,10 +22,13 @@ export class HoverDirective implements OnInit{
 
   @HostListener('mouseenter') onMouseEnter() {
     this.renderer.setStyle(this.element.nativeElement, 'background-color', 'red');
+    this.renderer.setStyle(this.element.nativeElement, 'color', this.color);
   }
 
-  // @HostListener('mouseleave') onMouseLeave() {
-  //   this.renderer.setStyle(this.element.nativeElement, 'background-color', 'white');  }
+  @HostListener('mouseleave') onMouseLeave() {
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'white');
+    this.renderer.setStyle(this.element.nativeElement, 'color', 'black');
+    }
 
 }
 

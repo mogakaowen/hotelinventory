@@ -35,6 +35,7 @@
 
 <div *ngIf="hideRooms">
     <div *ngIf="rooms$ | async as rooms">
-        <app-rooms-list [Rooms]="rooms" [price]="priceFilter.value" (selectedRoom)="roomSelect($event)" [title]="Title"></app-rooms-list>
+        <app-rooms-list [Rooms]="rooms" [price]="priceFilter.value" (selectedRoom)="roomSelect($event)"
+            [title]="Title"></app-rooms-list>
     </div>
 </div>

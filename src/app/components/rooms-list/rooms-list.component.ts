@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit,OnChanges, EventEmitter, ChangeDetectionStrategy, SimpleChanges, OnDestroy } from '@angular/core';
+import { Component, Input, Output, OnInit, OnChanges, EventEmitter, ChangeDetectionStrategy, SimpleChanges, OnDestroy } from '@angular/core';
 import { Roomlist } from 'src/app/room';
 
 @Component({
@@ -7,7 +7,7 @@ import { Roomlist } from 'src/app/room';
   styleUrls: ['./rooms-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RoomsListComponent implements OnInit, OnChanges, OnDestroy{
+export class RoomsListComponent implements OnInit, OnChanges, OnDestroy {
   @Input() Rooms: Roomlist[] = [];
   @Input() title: string = '';
   @Input() price: number = 0;
@@ -18,10 +18,10 @@ export class RoomsListComponent implements OnInit, OnChanges, OnDestroy{
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log('ngOnChanges called');
-    console.log(changes);
-   if(changes['title']){
-    this.title = changes['title'].currentValue.toUpperCase();
-   }
+    console.log("Changes due to ngOnChanges:", changes);
+    if (changes['title']) {
+      this.title = changes['title'].currentValue.toUpperCase();
+    }
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class RoomsListComponent implements OnInit, OnChanges, OnDestroy{
     this.selectedRoom.emit(room);
   }
 
-  
+
   ngOnDestroy(): void {
     console.log('ngOnDestroy called');
   } //called when the component is destroyed and removed from the DOM
