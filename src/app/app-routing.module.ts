@@ -11,11 +11,16 @@ import { RoomsBookingComponent } from './components/rooms/rooms-booking/rooms-bo
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'employee', component: EmployeeComponent, canActivate: [activateGuard] },
-  { path: 'booking', component: RoomsBookingComponent, canActivate: [activateGuard] },
-  { path: 'rooms', loadChildren: () => import('./components/rooms/rooms.module').then(m => m.RoomsModule), canActivate: [activateGuard], canMatch: [matchGuard] },
+  { path: 'employee', title: 'Employee', component: EmployeeComponent, canActivate: [activateGuard] },
+  { path: 'booking', title: 'Booked Rooms', component: RoomsBookingComponent, canActivate: [activateGuard] },
+  {
+    path: 'rooms', loadChildren: () => import('./components/rooms/rooms.module').then(m => m.RoomsModule), canActivate: [activateGuard], canMatch: [matchGuard],
+  },
   { path: 'booking/:id', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule), canActivate: [activateGuard], canMatch: [matchGuard] },
-  { path: 'comments', loadChildren: () => import('./comment/comment.module').then(m => m.CommentModule) }, // lazy loading
+  {
+    path: 'comments', loadChildren: () => import('./comment/comment.module').then(m => m.CommentModule),
+    title: 'Comments'
+  }, // lazy loading
   { path: '**', component: NotFoundComponent }, // wildcard route for a 404 page
 ];
 

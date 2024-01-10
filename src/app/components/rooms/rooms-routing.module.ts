@@ -7,12 +7,15 @@ import { activateChildGuard } from 'src/app/guards/activate-child.guard';
 
 
 const routes: Routes = [
-  {path: '', component: RoomsComponent, 
-  canActivateChild: [activateChildGuard],
-  children: [
-       {path: 'add', component: RoomsAddComponent}, 
+  {
+    path: '', component: RoomsComponent,
+    title: 'Rooms',
+    canActivateChild: [activateChildGuard],
+    children: [
+      { path: 'add', title: 'Add Room', component: RoomsAddComponent },
       //  {path: ':id', component: RoomsBookingComponent}, 
-      ]}, // this is a nested route
+    ]
+  }, // this is a nested route
 ];
 
 @NgModule({
