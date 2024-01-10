@@ -13,7 +13,7 @@ export class RoomsService {
   ];
 
   constructor(@Inject(APP_SERVICE_CONFIG) private appConfig: AppConfig, private http: HttpClient) {
-    console.log(this.appConfig.apiEndPoint);
+    console.log("Api Endpoint:", this.appConfig.apiEndPoint);
     console.log('Rooms Service constructor called'); // @Inject decorator to inject the value of the token
   }
 
