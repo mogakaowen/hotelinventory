@@ -28,8 +28,8 @@ export class BookingComponent implements OnInit {
     this.bookingForm.patchValue({
       // roomId: '', // affects the value of the form control when using activated route
       guestEmail: 'test@gmail.com',
-      checkinDate: new Date(2023, 10, 21), // Month is 0-based, so 10 represents November
-      checkoutDate: new Date('23-Nov-2023'),
+      checkinDate: new Date(2024, 10, 2), // Month is 0-based, so 10 represents November
+      checkoutDate: new Date('23-Nov-2024'),
       bookingStatus: '',
       bookingAmount: '',
       bookingDate: new Date(),
@@ -60,7 +60,7 @@ export class BookingComponent implements OnInit {
     console.log(roomId);
     this.bookingForm = this.fb.group({
       // bookingId: [''],
-      roomId: new FormControl({value: roomId, disabled:true}, [Validators.required]),
+      roomId: new FormControl({ value: roomId, disabled: true }, [Validators.required]),
       guestEmail: ['', [Validators.required, Validators.email]],
       checkinDate: ['', [Validators.required]],
       checkoutDate: ['', [Validators.required]],
@@ -86,9 +86,9 @@ export class BookingComponent implements OnInit {
       ]),  // dynamic form group in a nested form array
       tnc: new FormControl(false, [Validators.requiredTrue]),
     },
-    {
-      updateOn : 'blur',  validators: [CustomValidator.ValidateDate]
-    },
+      {
+        updateOn: 'blur', validators: [CustomValidator.ValidateDate]
+      },
     );
 
     // this.bookingForm.valueChanges.subscribe((data) => {
@@ -106,7 +106,8 @@ export class BookingComponent implements OnInit {
   }
 
   addBooking() {
-    console.log(this.bookingForm.getRawValue());
+    console.log("Raw Values:", this.bookingForm.getRawValue());
+    console.log("Form Values:", this.bookingForm.value);
     // this.bookingService.bookRoom(this.bookingForm.getRawValue()).subscribe((data) => {
     //   console.log(data);
     // });
